@@ -21,7 +21,17 @@ def rotacao_z(theta):
                   [0, 0, 0, 1]])
     return A
 
-def projecao(pontos, dist_focal):
+def translacao(x, y, z):
+
+    A = np.array([
+        [1, 0, 0, x],
+        [0, 1, 0, y],
+        [0, 0, 1, z],
+        [0, 0, 0, 1]])
+
+    return A
+
+def projecao_cubo(pontos, dist_focal):
 
     transformacao = np.array([[0,0,0,-dist_focal], 
                               [1,0,0,0], 
