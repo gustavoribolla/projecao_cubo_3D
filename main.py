@@ -50,6 +50,10 @@ posicao = np.array([0, 0, 0, 1])
 
 while rodando:
     for event in pg.event.get():
+
+        if event.type == pg.KEYDOWN:
+            if event.key == pg.K_ESCAPE:
+                rodando = False
         if event.type == pg.QUIT:
             rodando = False
         if event.type == pg.MOUSEWHEEL:
@@ -91,13 +95,11 @@ while rodando:
     (0, 0, 255),      # Blue
     (128, 0, 128),    # Purple
     (255, 0, 255),    # Magenta
-    (128, 128, 128),  # Gray
     (255, 255, 255),  # White
     (255, 0, 150),    # Pink
     (0, 128, 0),      # Green
     (128, 0, 0),      # Maroon
     (0, 128, 128),    # Teal
-    (165, 42, 42),    # Brown
     (255, 255, 224),  # Light Yellow
     (255, 140, 0),    # Dark Orange
     (0, 139, 139),    # Dark Cyan
