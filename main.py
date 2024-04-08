@@ -62,6 +62,10 @@ while rodando:
                 distancia_focal += 25
             elif event.y < 0 and distancia_focal>26:
                 distancia_focal -= 25
+        # # Obtém o movimento relativo do mouse
+        # rel_x, rel_y = pg.mouse.get_rel()
+        # # Ajusta a distância focal com base no movimento do mouse
+        # distancia_focal -= rel_y
 
     angulo += aumento
     tela.fill((0,0,0))
