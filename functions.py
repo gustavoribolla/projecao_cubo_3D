@@ -46,4 +46,6 @@ def projecao_cubo(pontos, dist_focal):
             pontos_projetados.append((ponto[1]/z, ponto[2]/z, pontos[2][i]))
         else:
             pontos_projetados.append((0, 0, 0))
-    return np.array(pontos_projetados)
+
+    A = np.array(pontos_projetados)
+    return A
