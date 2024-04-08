@@ -8,8 +8,8 @@ altura = 480
 distancia_focal = 200
 rodando = True
 angulo = 0
+aumento = 0.1
 posicao_jogador = np.array([0, 0, 0, 1])
-
 
 pg.init()
 tela = pg.display.set_mode((largura, altura))
@@ -66,24 +66,29 @@ cores = [
     (139, 0, 139)     # Dark Magenta
 ]
 
-
-
 rodando = True
 
 while rodando:
     for event in pg.event.get():
         if event.type == pg.QUIT:
-            pg.quit()
             rodando = False
 
-    angulo += 0.01
+        if event.type == pg.KEYDOWN:
+            # Altera a velocidade do personagem
+            if event.key == pg.K_UP:
+                aumento += 0.1
+            if event.key == pg.K_DOWN:
+                aumento -= 0.1
+
+    angulo += aumento
+    # angulo += 0.01
     tela.fill((0,0,0))
 
     vertices_rotacionados = translacao(0,0,0) @ translacao(0, 0, 250) @ rotacao_x(angulo) @ rotacao_y(angulo) @ rotacao_z(angulo) @ vertices
-    
     pontos_projetados = projecao_cubo(vertices_rotacionados, distancia_focal)
 
     cor = random.choice(cores)
+
     for vertice in arestas :
 
         ponto_inicial = (pontos_projetados[vertice[0]][0] + (largura/2), pontos_projetados[vertice[0]][1] + altura/2)
