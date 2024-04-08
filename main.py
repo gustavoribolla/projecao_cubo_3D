@@ -9,9 +9,9 @@ distancia_focal = 200
 rodando = True
 angulo = 0
 aumento = 0.02
-cooldown = 60  # Time for color cooldown in frames
+cooldown = 60  
 cooldown_contador = 0
-cor = (255, 0, 150)  # Initial color
+cor = (255, 0, 150) 
 x = 0
 y = 0
 
@@ -93,7 +93,7 @@ while rodando:
     (255, 0, 255),    # Magenta
     (128, 128, 128),  # Gray
     (255, 255, 255),  # White
-    (255, 0, 150),  # Pink
+    (255, 0, 150),    # Pink
     (0, 128, 0),      # Green
     (128, 0, 0),      # Maroon
     (0, 128, 128),    # Teal
@@ -102,7 +102,7 @@ while rodando:
     (255, 140, 0),    # Dark Orange
     (0, 139, 139),    # Dark Cyan
     (139, 0, 139)     # Dark Magenta
-]
+    ]
 
     if cooldown_contador <= 0:
         cor = random.choice(cores)
