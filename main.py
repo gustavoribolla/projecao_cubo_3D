@@ -1,6 +1,7 @@
 import numpy as np
 import pygame as pg
 from functions import *
+import random
 
 largura = 640
 altura = 480
@@ -42,6 +43,16 @@ vertices = vertices.T * 50
 vertices = np.vstack((vertices, np.ones((1, vertices.shape[1]))))
 posicao = np.array([0, 0, 0, 1])
 
+cores = [
+    (255, 0, 0),    # Red
+    (255, 165, 0),  # Orange
+    (255, 255, 0),  # Yellow
+    (0, 255, 0),    # Green
+    (0, 0, 255),    # Blue
+    (75, 0, 130),   # Indigo
+    (128, 0, 128)   # Violet
+]
+
 
 rodando = True
 
@@ -58,10 +69,12 @@ while rodando:
     
     pontos_projetados = projecao_cubo(vertices_rotacionados, distancia_focal)
 
+    cor = random.choice(cores)
     for vertice in arestas :
+
         ponto_inicial = (pontos_projetados[vertice[0]][0] + (largura/2), pontos_projetados[vertice[0]][1] + altura/2)
         ponto_final = (pontos_projetados[vertice[1]][0] + (largura/2), pontos_projetados[vertice[1]][1] + altura/2)
-        pg.draw.line(tela, (255, 255, 255), ponto_inicial, ponto_final, 4)
+        pg.draw.line(tela, cor, ponto_inicial, ponto_final, 4)
 
     pg.display.flip()
     clock.tick(50)
