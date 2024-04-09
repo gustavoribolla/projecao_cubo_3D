@@ -7,8 +7,8 @@ O projeto consiste na confecção de um cubo em 3D que gira constantemente, pode
 ## Como Jogar:
 
 1. O cubo inicia com uma aceleração padrão, que pode ser aumentada e se aumentada, diminuida através das setas de "cima" e "baixo" do teclado;
-2. A posição da câmera pode ser alterada para visualizar o cubo de diferentes ângulos através das teclas de ```w```, ```a```, ```s``` e ```d```;
-3. A distância focal pode ser mudada através do scroll do mouse, podendo mover a câmera para frente e para trás até um limite.
+2. A posição da câmera pode ser alterada horizontalmente para visualizar o cubo de diferentes ângulos através das teclas de  ```a``` e ```d```;
+3. A distância focal pode ser mudada através do scroll do mouse ou das teclas de ```w``` e ```s```, podendo mover a câmera para frente e para trás até um limite.
 
 ## Como Executar:
 
@@ -23,7 +23,12 @@ O código está separado em arquivos, com cada arquivo comentado para melhor org
 As funções estão separadas no arquivo ```functions.py```.
 
 ## Código e Modelo Físico:
-### 1. Matrizes:
+
+### 1. Cálculo de Rotação e Translação do Cubo:
+
+O motivo para o cálculo das rotações e translação é aplicar as transformações geométricas aos vértices do cubo antes de projetá-los na tela. Essas transformações permitem que o cubo seja movido e rotacionado em um espaço tridimensional antes de ser carregado na tela. Para isso, há a multiplicação da função de translação pela rotação das 3 dimensões, além da multiplicação da matriz resultante das rotações e translação pelos vértices originais do cubo. A função de translação recebe x atual, o y atual e inicialmente o z = 200, representando a profundidade de visão ao cubo. Já as funções de rotação recebem o atual ângulo de rotação e realizam a multiplicação matricial através das matrizes expostas abaixo.
+
+### 2. Matrizes:
 
 #### Matriz de Transformação:
 
@@ -81,8 +86,35 @@ T = \begin{bmatrix}
 \end{bmatrix}
 $$
 
+### 3. Função de Projeção:
+
+#### Introdução:
+
+Em resumo, a função ```projecao_cubo(pontos, dist_focal)``` realiza uma projeção perspectiva dos pontos tridimensionais pontos em relação a uma câmera virtual com distância focal ```dist_focal```, retornando as coordenadas projetadas dos pontos no plano de imagem (2D), com a profundidade z mantida como parte da informação retornada.
+
+#### Definição da Matriz de Transformação:
+
+A função começa definindo uma matriz de transformação ```transformacao``` que descreve a projeção perspectiva.<br>
+A primeira linha (```[0, 0, 0, -dist_focal]```) define um deslocamento ao longo do eixo z (para trás) equivalente à distância focal negativa.<br>
+As próximas três linhas (```[1, 0, 0, 0]```, ```[0, 1, 0, 0]```, ```[0, 0, -1/dist_focal, 0]```) são parte da matriz de projeção perspectiva.
+
+#### Aplicação da Transformação aos Pontos:
+
+A matriz de transformação transformacao é aplicada aos pontos tridimensionais pontos utilizando multiplicação matricial:<br>
+```matriz_transformada = transformacao @ pontos```
+
+#### Projeção dos Pontos Transformados:
+
+Para cada ponto transformado (representado por uma coluna na matriz transformada), calcula-se a coordenada z do ponto.<br>
+Verifica-se se a coordenada z do ponto original (```pontos[2][i]```) é menor ou igual a zero. Caso não seja, significa que o ponto está à frente da câmera (na direção do eixo z).<br>
+Para os pontos que estão à frente da câmera, calcula-se as coordenadas projetadas (```ponto[1]/z```, ```ponto[2]/z```, ```pontos[2][i]```). Aqui, ```ponto[1]/z``` e ```ponto[2]/z``` representam a projeção 2D do ponto no plano de imagem.<br>
+Se o ponto estiver atrás da câmera (ou na mesma posição), as coordenadas projetadas são definidas como ```(0, 0, 0)```.
+
+#### Conversão para NumPy Array e Retorno:
+Os pontos projetados são armazenados em uma lista ```pontos_projetados``` e convertidos em um array NumPy A, que é então retornado pela função.
+
 ## Referências:
 1. [ChatGPT](https://chat.openai.com/) para saciar dúvidas relacionadas ao pygame.
 
 ## Créditos:
-Projeto desenvolvido por Gustavo Colombi Ribolla e Rafaela Afférri de Oliveira.
+Projeto desenvolvido por Gustavo Colombi Ribolla e Rafaela Afférri de Olivei
