@@ -2,11 +2,11 @@
 
 ## Introdução:
 
-O projeto consiste na confecção de um cubo em 3D que gira constantemente, podendo mover a câmera para visualizar o cubo em vários ângulos, aumentar e diminuir a velocidade na qual o cubo gira e aumentar e diminuir a distância focal (zoom) da câmera.
+O projeto consiste na confecção de um cubo colorido em 3D que gira constantemente, podendo mover a câmera para visualizar o cubo em vários ângulos, aumentar e diminuir a velocidade na qual o cubo gira e aumentar e diminuir a distância focal (zoom) da câmera.
 
 ## Como Jogar:
 
-1. O cubo inicia com uma aceleração padrão, que pode ser aumentada e se aumentada, diminuida através das setas de "cima" e "baixo" do teclado;
+1. O cubo inicia com uma aceleração padrão, que pode ser aumentada e se aumentada, diminuída através das setas de "cima" e "baixo" do teclado;
 2. A posição da câmera pode ser alterada horizontalmente para visualizar o cubo de diferentes ângulos através das teclas de  ```a``` e ```d```;
 3. A distância focal pode ser mudada através do scroll do mouse ou das teclas de ```w``` e ```s```, podendo mover a câmera para frente e para trás até um limite.
 
@@ -121,7 +121,7 @@ A cada segundo é sorteada uma cor para todas as linhas do cubo, para que a expe
 ```(255, 0, 0)```, ```(255, 165, 0)```, ```(255, 255, 0)```, ```(0, 255, 0)```, ```(0, 255, 255)```, ```(0, 0, 255)```, ```(128, 0, 128)```, ```(255, 0, 255)```, ```(255, 255, 255)```, 
 ```(255, 0, 150)```, ```(0, 128, 0)```, ```(128, 0, 0)```, ```(0, 128, 128)```, ```(255, 255, 224)```, ```(255, 140, 0)```, ```(0, 139, 139)```, ```(139, 0, 139)```.
 
-As cores estão represntadas pela escala RGB (Red, Green, Blue).
+As cores estão representadas pela escala RGB (Red, Green, Blue).
 
 ## Referências:
 1. [ChatGPT](https://chat.openai.com/) para saciar dúvidas relacionadas ao pygame.
