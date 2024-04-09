@@ -26,7 +26,7 @@ As funções estão separadas no arquivo ```functions.py```.
 
 ### 1. Cálculo de Rotação e Translação do Cubo:
 
-O motivo para o cálculo das rotações e translação é aplicar as transformações geométricas aos vértices do cubo antes de projetá-los na tela. Essas transformações permitem que o cubo seja movido e rotacionado em um espaço tridimensional antes de ser carregado na tela. Para isso, há a multiplicação da função de translação pela rotação das 3 dimensões, além da multiplicação da matriz resultante das rotações e translação pelos vértices originais do cubo. A função de translação recebe x atual, o y atual e inicialmente o z = 200, representando a profundidade de visão ao cubo. Já as funções de rotação recebem o atual ângulo de rotação e realizam a multiplicação matricial através das matrizes expostas abaixo.
+O motivo para o cálculo das rotações e translação é aplicar as transformações geométricas aos vértices do cubo antes de projetá-los na tela. Essas transformações permitem que o cubo seja movido e rotacionado em um espaço tridimensional antes de ser carregado na tela. Para isso, há a multiplicação da função de translação pela rotação das 3 dimensões, além da multiplicação da matriz resultante das rotações e translação pelos vértices originais do cubo. A função de translação recebe x atual, o y atual e inicialmente o ```z=200```, representando a profundidade de visão ao cubo. Já as funções de rotação recebem o atual ângulo de rotação e realizam a multiplicação matricial através das matrizes expostas abaixo.
 
 ### 2. Matrizes:
 
@@ -111,7 +111,17 @@ Para os pontos que estão à frente da câmera, calcula-se as coordenadas projet
 Se o ponto estiver atrás da câmera (ou na mesma posição), as coordenadas projetadas são definidas como ```(0, 0, 0)```.
 
 #### Conversão para NumPy Array e Retorno:
+
 Os pontos projetados são armazenados em uma lista ```pontos_projetados``` e convertidos em um array NumPy A, que é então retornado pela função.
+
+## Coloração do Cubo:
+
+A cada segundo é sorteada uma cor para todas as linhas do cubo, para que a experiência fique mais diversa e interessante, dentre as cores a seguir:
+
+```(255, 0, 0)```, ```(255, 165, 0)```, ```(255, 255, 0)```, ```(0, 255, 0)```, ```(0, 255, 255)```, ```(0, 0, 255)```, ```(128, 0, 128)```, ```(255, 0, 255)```, ```(255, 255, 255)```, 
+```(255, 0, 150)```, ```(0, 128, 0)```, ```(128, 0, 0)```, ```(0, 128, 128)```, ```(255, 255, 224)```, ```(255, 140, 0)```, ```(0, 139, 139)```, ```(139, 0, 139)```.
+
+As cores estão represntadas pela escala RGB (Red, Green, Blue).
 
 ## Referências:
 1. [ChatGPT](https://chat.openai.com/) para saciar dúvidas relacionadas ao pygame.
