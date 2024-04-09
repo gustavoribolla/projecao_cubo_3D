@@ -40,12 +40,14 @@ def projecao_cubo(pontos, dist_focal):
     
     matriz_transformada = transformacao @ pontos
     pontos_projetados = []
+
     for i, ponto in enumerate(matriz_transformada.T):
         z = ponto[3]
-        if pontos[2][i] > 0:
-            pontos_projetados.append((ponto[1]/z, ponto[2]/z, pontos[2][i]))
-        else:
+        if pontos[2][i] <= 0:
             pontos_projetados.append((0, 0, 0))
+        else:
+            pontos_projetados.append((ponto[1]/z, ponto[2]/z, pontos[2][i]))
 
     A = np.array(pontos_projetados)
+    
     return A
