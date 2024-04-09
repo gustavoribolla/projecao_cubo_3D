@@ -24,6 +24,64 @@ As funções estão separadas no arquivo ```functions.py```.
 
 ## Código e Modelo Físico:
 
+### 1. Matrizes:
+
+#### Matriz de Transformação
+
+$
+\begin{bmatrix}
+z_p \\
+x_{p}w_{p} \\
+w_p \\
+\end{bmatrix}= 
+\begin{bmatrix}
+0 & 0 & -d \\
+1 & 0 & 0 \\
+0 & -\frac{1}{d} & 0 \\
+\end{bmatrix}
+\begin{bmatrix}
+x_o \\
+z_o \\
+1 \\
+\end{bmatrix}
+$
+
+#### Matrizes de Rotação (X, Y e Z)
+
+$
+R_x = \begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & \cos(\theta) & -\sin(\theta) & 0 \\
+0 & \sin(\theta) & \cos(\theta) & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\hspace{0.5in}
+R_y = \begin{bmatrix}
+\cos(\theta) & 0 & \sin(\theta) & 0 \\
+0 & 1 & 0 & 0 \\
+-\sin(\theta) & 0 & \cos(\theta) & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\hspace{0.5in}
+R_z = \begin{bmatrix}
+\cos(\theta) & - \sin(\theta) & 0 & 0 \\
+\sin(\theta) & \cos(\theta) & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+$
+
+#### Matriz de Translação
+
+$
+R_z = \begin{bmatrix}
+1 & 0 & 0 & {x} \\
+0 & 1 & 0 & {y} \\
+0 & 0 & 1 & {z} \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+$
+
 ## Referências:
 1. [ChatGPT](https://chat.openai.com/) para saciar dúvidas relacionadas ao pygame.
 
