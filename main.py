@@ -74,10 +74,10 @@ while rodando:
         x -= 4
     if teclas_pressionadas[pg.K_d]:
         x += 4
-    if teclas_pressionadas[pg.K_w]:
-        y -= 4
-    if teclas_pressionadas[pg.K_s]:
-        y += 4
+    if teclas_pressionadas[pg.K_w] and distancia_focal < 1450:
+        distancia_focal += 25
+    if teclas_pressionadas[pg.K_s] and distancia_focal > 26:
+        distancia_focal -= 25
 
 
 
@@ -85,7 +85,7 @@ while rodando:
     tela.fill((0, 0, 0))
 
     
-    vertices_rotacionados = translacao(x, y, 0) @ translacao(x, y, 200) @ rotacao_x(angulo) @ rotacao_y(angulo) @ rotacao_z(angulo) @ vertices
+    vertices_rotacionados = translacao(x, y, 200) @ rotacao_x(angulo) @ rotacao_y(angulo) @ rotacao_z(angulo) @ vertices
     pontos_projetados = projecao_cubo(vertices_rotacionados, distancia_focal)
 
     cores = [
