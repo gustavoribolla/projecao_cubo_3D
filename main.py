@@ -45,7 +45,6 @@ arestas = [
 
 vertices = vertices.T * 50
 vertices = np.vstack((vertices, np.ones((1, vertices.shape[1]))))
-posicao = np.array([0, 0, 0, 1])
 
 
 while rodando:
@@ -62,6 +61,7 @@ while rodando:
             elif event.y < 0 and distancia_focal > 26:
                 distancia_focal -= 25
 
+        
     # Mudar a velocidade de rotação
     teclas_pressionadas = pg.key.get_pressed()
     if teclas_pressionadas[pg.K_UP]:
@@ -79,11 +79,13 @@ while rodando:
     if teclas_pressionadas[pg.K_s]:
         y += 4
 
+
+
     angulo += aumento
     tela.fill((0, 0, 0))
 
-    vertices_rotacionados = translacao(0, 0, 0) @ translacao(x, y, 250) @ rotacao_x(angulo) @ rotacao_y(
-        angulo) @ rotacao_z(angulo) @ vertices
+    
+    vertices_rotacionados = translacao(x, y, 0) @ translacao(x, y, 200) @ rotacao_x(angulo) @ rotacao_y(angulo) @ rotacao_z(angulo) @ vertices
     pontos_projetados = projecao_cubo(vertices_rotacionados, distancia_focal)
 
     cores = [
