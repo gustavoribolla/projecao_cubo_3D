@@ -2,12 +2,12 @@
 
 ## Introdução:
 
-O projeto consiste na confecção de um cubo colorido em 3D que gira constantemente, podendo mover a câmera para visualizar o cubo em vários ângulos, aumentar e diminuir a velocidade na qual o cubo gira e aumentar e diminuir a distância focal (zoom) da câmera.
+O projeto consiste na confecção de um cubo colorido em 3D que gira constantemente, podendo mover a câmera para visualizar o cubo em vários perspectivas, aumentar e diminuir a velocidade na qual o cubo gira e aumentar e diminuir a distância focal (zoom) da câmera.
 
-## Como Jogar:
+## Como Utilizar o programa:
 
-1. O cubo inicia com uma aceleração padrão, que pode ser aumentada e se aumentada, diminuída através das setas de "cima" e "baixo" do teclado;
-2. A posição da câmera pode ser alterada horizontalmente para visualizar o cubo de diferentes ângulos através das teclas de  ```a``` e ```d```;
+1. O cubo inicia com uma aceleração padrão, que pode ser aumentada e diminuída através das setas de "cima" e "baixo" do teclado;
+2. A posição da câmera pode ser alterada horizontalmente para visualizar o cubo de diferentes perspectivas através das teclas de  ```a``` e ```d```;
 3. A distância focal pode ser mudada através do scroll do mouse ou das teclas de ```w``` e ```s```, podendo mover a câmera para frente e para trás até um limite;
 4. O Pygame é fechado ao clicar no X presente na tela ou através da tecla ```esc``` no teclado.
 
@@ -91,7 +91,7 @@ $$
 
 #### Introdução:
 
-Em resumo, a função ```projecao_cubo(pontos, dist_focal)``` realiza uma projeção perspectiva dos pontos tridimensionais pontos em relação a uma câmera virtual com distância focal ```dist_focal```, retornando as coordenadas projetadas dos pontos no plano de imagem (2D), com a profundidade z mantida como parte da informação retornada.
+Em resumo, a função ```projecao_cubo(pontos, dist_focal)``` realiza uma projeção perspectiva dos pontos seguindo o modelo de câmera pinhole. A projecão dos pontos tridimensionais é feita em relação a uma câmera virtual com distância focal ```dist_focal```, retornando as coordenadas projetadas dos pontos no plano de imagem (2D), com a profundidade z mantida como parte da informação retornada. Ou seja, a função recebe pontos em 3D e os remodela para 2D para que eles possam ser mostrados no computador.
 
 #### Definição da Matriz de Transformação:
 
